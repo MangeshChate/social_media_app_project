@@ -1,10 +1,28 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './profile.css'
 import Topbar from '../../components/topbar/Topbar'
 import Sidebar from '../../components/sidebar/Sidebar'
 import Rightbar from '../../components/rightbar/Rightbar'
 import Feed from '../../components/feed/Feed'
+import axios from 'axios';
+import { useParams } from 'react-router'
 function Profile() {
+    const PF = import.meta.env.VITE_PUBLIC_FOLDER;
+
+  
+    const [user, setUser] = useState([]);
+    const username = useParams().username
+    
+    useEffect(() => {
+        const fetchUsers = async () => {
+
+            const res = await axios.get(`http://localhost:8800/api/users?username=${username}`);
+            setUser(res.data);
+
+
+        }
+        fetchUsers();
+    }, [username])
     return (
         <div>
             <Topbar />
@@ -14,17 +32,17 @@ function Profile() {
                     <div className="profileRightTop">
                         <div className="profileCover">
 
-                        <img src="https://www.drcommodore.it/wp-content/uploads/2023/05/trasferimento-2023-05-20T173444.727-1-1-1024x576.jpg" className='profileCoverImg' alt="" />
-                        <img src="https://marcorei7.files.wordpress.com/2021/05/ee72b0ca17cd6185e03ed809ba766698.jpeg?w=500" className='profileUserImg' alt="" />
+                        <img  crossOrigin='anonymous'  src={user.coverPicture ? PF +user.coverPicture : PF+"coverImg.gif"} className='profileCoverImg' alt="" />
+                        <img crossOrigin='anonymous'  src={user.profilePicture ? PF+ user.profilePicture : PF+"avatar.gif"} className='profileUserImg' alt="" />
                         </div>
                         <div className="profileInfo">
-                            <h4 className='profileInfoName'>Mangesh Chate</h4>
-                            <span className="profileInfoDesc">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Natus aut maxime consectetur.</span>
+                            <h4 className='profileInfoName'>{user.username}</h4>
+                            <span className="profileInfoDesc">{user.desc}</span>
                         </div>
                     </div>
                     <div className="profileRightBottom">
-                        <Feed />
-                        <Rightbar profile/>
+                        <Feed username={username}/>
+                        <Rightbar user={user}/>
 
                     </div>
 

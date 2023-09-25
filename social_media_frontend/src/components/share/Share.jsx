@@ -1,37 +1,80 @@
-import React from 'react'
+import React, { useContext, useRef, useState } from 'react'
 import "./share.css";
 import { EmojiEmotions, EmojiEmotionsOutlined, Label, PermMedia, Room } from "@mui/icons-material";
+import { AuthContext } from '../../context/AuthContext';
+import axios from 'axios';
 function Share() {
+  const PF = import.meta.env.VITE_PUBLIC_FOLDER;
+
+
+  const { user } = useContext(AuthContext)
+  const desc = useRef();
+  const [file,setFile]  = useState(null);
+
+  const submitHandler = async(e) =>{
+    e.preventDefault();
+    const newPost = {
+      userId:user._id.$oid,
+      desc:desc.current.value,
+
+    }
+    if(file){
+      const data = new FormData();
+      const fileName = Date.now() + file.name;
+      console.log(fileName + file)
+      data.append("file" ,file ,fileName)
+      // data.append("name" ,fileName)
+      
+      
+      
+      newPost.img = fileName;
+      
+      try {
+        await axios.post('http://localhost:8800/api/upload',data)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+
+    try{
+       await  axios.post("http://localhost:8800/api/posts",newPost);
+       window.location.reload()
+    }catch(err){
+        console.log((err))
+    }
+  }
+
   return (
     <div className='share'>
       <div className="shareWrapper">
         <div className="shareTop">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWBSZEZP7imKmWy55Lk1GUiV6vCGXFj4i5Cg&usqp=CAU" className='shareProfileImg' alt="" />
-            <input type="text" placeholder='Whats in your mind' className='shareInput' />
+          <img crossOrigin='anonymous'  src={user.profilePicture ? PF + user.profilePicture : PF + "avatar.gif"} className='shareProfileImg' alt="" />
+          <input type="text" placeholder={"What's in your mind " + user.username + "?"} className='shareInput' ref={desc} />
         </div>
         <hr className="shareHr" />
 
-        <div className="shareBottom">
-            <div className="shareOptions">
-                <div className="shareOption">
-                    <PermMedia className='shareIcon' htmlColor='tomato'/>
-                    <span className='shareOptionText'>Photo/Video</span>
-                </div>
-                <div className="shareOption">
-                    <Label className='shareIcon' htmlColor='blue'/>
-                    <span className='shareOptionText'>Tag</span>
-                </div>
-                <div className="shareOption">
-                    <Room className='shareIcon'htmlColor='green'/>
-                    <span className='shareOptionText'>Location</span>
-                </div>
-                <div className="shareOption">
-                    <EmojiEmotions className='shareIcon'htmlColor='orange'/>
-                    <span className='shareOptionText'>Feelings</span>
-                </div>
+        <form className="shareBottom" onSubmit={submitHandler}>
+          <div className="shareOptions">
+            <label htmlFor='file' className="shareOption">
+              <PermMedia className='shareIcon' htmlColor='tomato' />
+              <span className='shareOptionText'>Photo/Video</span>
+              <input style={{display:"none"}} type="file" id="file" accept='.gif ,.png ,.jpeg ,.jpg' onChange={(e)=>setFile(e.target.files[0])}/>
+            </label>
+            <div className="shareOption">
+              <Label className='shareIcon' htmlColor='blue' />
+              <span className='shareOptionText'>Tag</span>
             </div>
-            <button className="shareButton">Share</button>
-        </div>
+            <div className="shareOption">
+              <Room className='shareIcon' htmlColor='green' />
+              <span className='shareOptionText'>Location</span>
+            </div>
+            <div className="shareOption">
+              <EmojiEmotions className='shareIcon' htmlColor='orange' />
+              <span className='shareOptionText'>Feelings</span>
+            </div>
+          </div>
+          <button className="shareButton" type={'submit'}>Share</button>
+        </form>
       </div>
     </div>
   )

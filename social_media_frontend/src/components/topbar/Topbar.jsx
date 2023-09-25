@@ -1,39 +1,54 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import "./topbar.css";
-import {Search ,Person, Chat, Notifications} from "@mui/icons-material"
+import { Search, Person, Chat, Notifications } from "@mui/icons-material";
+import { Link } from 'react-router-dom';
+import { AuthContext } from '../../context/AuthContext';
 function Topbar() {
+
+  const {user} = useContext(AuthContext);
+  const PF = import.meta.env.VITE_PUBLIC_FOLDER;
   return (
     <div className='topbarContainer'>
       <div className="topbarLeft">
-        <span className="logo">RabbitChat</span>
+        <Link to="/" style={{ textDecoration: "none" }}>
+          <span className="logo">RabbitChat</span>
+        </Link>
       </div>
       <div className="topbarCenter">
         <div className="searchbar">
-            <Search className='searchIcon'/>
-            <input type="text" placeholder='search for friends, posts or video' className='searchInput'/>
+          <Search className='searchIcon' />
+          <input type="text" placeholder='search for friends, posts or video' className='searchInput' />
         </div>
       </div>
       <div className="topbarRight">
         <div className="topbarLinks">
-            <span className="topbarLink">Homepage</span>
-            <span className="topbarLink">Timeline</span>
+          <span className="topbarLink">Homepage</span>
+          <span className="topbarLink">Timeline</span>
 
         </div>
         <div className="topbarIcons">
-            <div className="topbarIconItem">
-                <Person/>
-                <span className="topbarIconBadge">1</span>
-            </div>
-            <div className="topbarIconItem">
-                <Chat/>
-                <span className="topbarIconBadge">1</span>
-            </div>
-            <div className="topbarIconItem">
-                <Notifications/>
-                <span className="topbarIconBadge">1</span>
-            </div>
+          <div className="topbarIconItem">
+            <Person />
+            <span className="topbarIconBadge">1</span>
+          </div>
+          <div className="topbarIconItem">
+            <Chat />
+            <span className="topbarIconBadge">1</span>
+          </div>
+          <div className="topbarIconItem">
+            <Notifications />
+            <span className="topbarIconBadge">1</span>
+          </div>
         </div>
-        <img src="https://media.licdn.com/dms/image/D5603AQEMaxAUdeWjUA/profile-displayphoto-shrink_800_800/0/1692416483158?e=2147483647&v=beta&t=5a-wzTBakwDfiOW1WaxpnWO4NeayH6nfUbswzT7eI0A" alt="profilepicture" className='topbarImg' />
+        <Link to={`/profile/${user.username}`}>
+        <img 
+        crossOrigin='anonymous' 
+          src={user && user.profilePicture ? PF + user.profilePicture : PF + "avatar.gif"}
+          alt="profilepicture"
+          className="topbarImg"
+        />
+        </Link>
+
       </div>
 
     </div>
