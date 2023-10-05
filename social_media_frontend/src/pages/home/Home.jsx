@@ -7,7 +7,7 @@ import "./home.css"
 
 function Home() {
   return (
-    <div>
+    <div className='text-light gradient-bg-welcome'>
       <Topbar />
       <div className="homeContainer">
         <Sidebar />

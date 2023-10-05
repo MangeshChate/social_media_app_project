@@ -16,13 +16,13 @@ function Post({ post }) {
     const [user, setUser] = useState([]);
 
     useEffect(()=>{
-        setIsLiked(post.likes.includes(currentUser._id.$oid))
+        setIsLiked(post.likes.includes(currentUser._id))
     },[currentUser._id.$oid ,post.likes])
     
     const likeHandler = () => {
 
         try {
-            axios.put(`http://localhost:8800/api/posts/${post._id}/like` ,{userId:currentUser._id.$oid})
+            axios.put(`http://localhost:8800/api/posts/${post._id}/like` ,{userId:currentUser._id})
         } catch (error) {
             
         }
@@ -37,14 +37,13 @@ function Post({ post }) {
             const res = await axios.get(`http://localhost:8800/api/users?userId=${post.userId}`);
             setUser(res.data);
 
-
             setUser(res.data);
         }
         fetchUsers();
     }, [])
 
     return (
-        <div className='post' >
+        <div className='post white-glassmorphism' >
             <div className="postWrapper">
                 <div className="postTop">
                     <div className="postTopLeft">

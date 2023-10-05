@@ -5,6 +5,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    color: white;
 }
 
 .loginWrapper{
@@ -23,7 +24,7 @@
 .loginLogo{
     font-size: 50px;
     font-weight: 800;
-    color: #1775ee;
+   
     margin-bottom: 10px;
 }
 
@@ -34,7 +35,7 @@
 }
 
 .loginBox{
-    height: 400px;
+    
     padding: 20px;
     background-color: #fff;
     border-radius: 10px;
@@ -45,7 +46,7 @@
 .loginInput{
     height: 50px;
     border-radius: 10px;
-    border: 1px solid gray;
+   
     font-size: 18px;
     padding-left: 20px;
 }

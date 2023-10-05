@@ -5,7 +5,7 @@ import CloseFriend from '../closeFriend/CloseFriend';
 import { Users } from '../../dummyData'
 function Sidebar() {
     return (
-        <div className='sideBar'>
+        <div className='sideBar gradient-bg-transactions '>
             <div className="sidebarWrapper">
                 <ul className='sidebarList'>
                     <li className="sidebarListItem">

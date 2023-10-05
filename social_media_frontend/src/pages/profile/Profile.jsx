@@ -24,7 +24,7 @@ function Profile() {
         fetchUsers();
     }, [username])
     return (
-        <div>
+        <div className='text-light gradient-bg-welcome'>
             <Topbar />
             <div className="profile">
                 <Sidebar />
@@ -37,7 +37,7 @@ function Profile() {
                         </div>
                         <div className="profileInfo">
                             <h4 className='profileInfoName'>{user.username}</h4>
-                            <span className="profileInfoDesc">{user.desc}</span>
+                            <span className="profileInfoDesc text-light fw-semibold ">{user.desc}</span>
                         </div>
                     </div>
                     <div className="profileRightBottom">

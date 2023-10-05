@@ -1,6 +1,6 @@
 import React, { useContext, useRef, useState } from 'react'
 import "./share.css";
-import { EmojiEmotions, EmojiEmotionsOutlined, Label, PermMedia, Room } from "@mui/icons-material";
+import { AddBox, Cancel, EmojiEmotions, EmojiEmotionsOutlined, Label, PermMedia, PlayArrowTwoTone, PostAdd, Room, ShareOutlined } from "@mui/icons-material";
 import { AuthContext } from '../../context/AuthContext';
 import axios from 'axios';
 function Share() {
@@ -14,7 +14,7 @@ function Share() {
   const submitHandler = async(e) =>{
     e.preventDefault();
     const newPost = {
-      userId:user._id.$oid,
+      userId:user._id,
       desc:desc.current.value,
 
     }
@@ -45,13 +45,19 @@ function Share() {
   }
 
   return (
-    <div className='share'>
+    <div className='share white-glassmorphism'>
       <div className="shareWrapper">
         <div className="shareTop">
           <img crossOrigin='anonymous'  src={user.profilePicture ? PF + user.profilePicture : PF + "avatar.gif"} className='shareProfileImg' alt="" />
-          <input type="text" placeholder={"What's in your mind " + user.username + "?"} className='shareInput' ref={desc} />
+          <input type="text" placeholder={"What's in your mind " + user.username + " ?"} className='shareInput p-3 text-light ms-3 ' ref={desc} />
         </div>
         <hr className="shareHr" />
+        {file && (
+          <div className="shareImgContainer">
+            <img src={URL.createObjectURL(file)} className='shareImg' alt="" />
+            <Cancel className='shareCancleImg' onClick={()=>setFile(null)}/>
+          </div>
+        )}
 
         <form className="shareBottom" onSubmit={submitHandler}>
           <div className="shareOptions">
@@ -73,6 +79,7 @@ function Share() {
               <span className='shareOptionText'>Feelings</span>
             </div>
           </div>
+
           <button className="shareButton" type={'submit'}>Share</button>
         </form>
       </div>
