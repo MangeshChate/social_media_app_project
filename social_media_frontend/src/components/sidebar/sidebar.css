@@ -28,12 +28,21 @@
 .sidebarListItem{
     display: flex;
     align-items: center;
-    margin-bottom: 30px;
+    margin-bottom: 50px;
 
 }
 .sidebarIcon{
     margin-right: 15px;
 }
+.sidebarIconImg{
+    margin-right: 15px;
+    width: 44px;
+   
+    border-radius: 50%;
+    object-fit: cover;
+
+}
+
 
 .sidebarButton{
     width: 150px;

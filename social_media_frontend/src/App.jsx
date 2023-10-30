@@ -7,6 +7,9 @@ import Profile from './pages/profile/Profile';
 import Register from './pages/register/Register';
 import { useContext } from 'react';
 import { AuthContext } from './context/AuthContext';
+import Messenger from './pages/messagner/Messenger';
+import PalmAi from './pages/PlamAi/PalmAi';
+import Wallet from './pages/Wallet';
 
 
 function App() {
@@ -21,6 +24,13 @@ function App() {
         <Route exact path="/login" element={<>{user ? <Navigate to="/" /> : <Login />}</>} />
         <Route exact path="/profile/:username" element={user ? <Profile /> : <Register />} />
         <Route exact path="/register" element={<>{user ? <Navigate to="/" /> : <Register />}</>} />
+
+        <Route exact path="/messenger" element={<>{!user ? <Navigate to="/" /> : <Messenger />}</>} />
+        <Route exact path="/RabbitAi" element={<>{!user ? <Navigate to="/" /> : <PalmAi />}</>} />
+        <Route exact path="/wallet" element={<>{<Wallet/>}</>} />
+
+
+
 
       </Routes>
 

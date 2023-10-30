@@ -1,12 +1,20 @@
 import React, { useContext } from 'react'
 import "./topbar.css";
-import { Search, Person, Chat, Notifications } from "@mui/icons-material";
+import { Search, Person, Chat, Notifications, Logout } from "@mui/icons-material";
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
+import { Button } from '@mui/material';
 function Topbar() {
 
   const {user} = useContext(AuthContext);
   const PF = import.meta.env.VITE_PUBLIC_FOLDER;
+
+
+  const handleLogOut = () =>{
+    localStorage.removeItem('user');
+    location.reload();
+  }
+
   return (
     <div className='topbarContainer shadow rounded-0   blue-glassmorphism'>
       <div className="topbarLeft">
@@ -48,6 +56,10 @@ function Topbar() {
           className="topbarImg"
         />
         </Link>
+        <Button variant="contained" className='d-flex justify-content-center align-align-items-center gap-1 fw-bold shadow-lg border-0 bg-opacity-10 bg-warning' onClick={ handleLogOut }>
+          <span>sign out</span>
+          <Logout sx={{fontSize:"1.2em"}}/>
+        </Button>
 
       </div>
 

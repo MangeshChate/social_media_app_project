@@ -1,0 +1,9 @@
+.user{
+    margin: 25px;
+   border: 1px solid grey;
+}
+
+.bot{
+margin: 25px;
+font-family: monospace;
+}

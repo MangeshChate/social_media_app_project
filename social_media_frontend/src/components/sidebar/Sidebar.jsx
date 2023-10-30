@@ -3,6 +3,7 @@ import "./sidebar.css"
 import { Bookmark, Chat, Event, Group, HailTwoTone, QuestionMarkRounded, RssFeed, School, VideoCallRounded, Work, WorkHistory } from "@mui/icons-material";
 import CloseFriend from '../closeFriend/CloseFriend';
 import { Users } from '../../dummyData'
+import { Link } from 'react-router-dom';
 function Sidebar() {
     return (
         <div className='sideBar gradient-bg-transactions '>
@@ -12,10 +13,10 @@ function Sidebar() {
                         <RssFeed className='sidebarIcon' />
                         <span className="sidebarListItemText">Feed</span>
                     </li>
-                    <li className="sidebarListItem">
+                    <Link to="/messenger" className="sidebarListItem text-decoration-none text-light">
                         <Chat className='sidebarIcon' />
                         <span className="sidebarListItemText">Chats</span>
-                    </li>
+                    </Link>
                     <li className="sidebarListItem">
                         <VideoCallRounded className='sidebarIcon' />
                         <span className="sidebarListItemText">Videos</span>
@@ -40,20 +41,30 @@ function Sidebar() {
                         <Event className='sidebarIcon' />
                         <span className="sidebarListItemText">Events</span>
                     </li>
-                    <li className="sidebarListItem">
-                        <School className='sidebarIcon' />
-                        <span className="sidebarListItemText">Courses</span>
-                    </li>
+
+
+
                 </ul>
+                <hr />
+                
+                    <Link to="/rabbitai" className="sidebarListItem text-decoration-none text-light btn  btn-outline-info mt-4 rounded-3 shadow font-monospace">
+
+                        <img src="https://stickerswiki.ams3.cdn.digitaloceanspaces.com/zoobapack/6168298.512.webp" className='sidebarIconImg' alt="" />
+                        <span className="sidebarListItemText fw-bold ">Talk with Rabbit AI</span>
+                    </Link>
+
+              
+
+                
                 <button className="sidebarButton">Show More</button>
-                <hr className='sidebarHr' />
+                {/* <hr className='sidebarHr' />
                 <ul className="sidebarFriendList">
                     {Users.map((u) => (
 
                         <CloseFriend key={u.id} user={u} />
                     ))}
 
-                </ul>
+                </ul> */}
             </div>
         </div>
     )
