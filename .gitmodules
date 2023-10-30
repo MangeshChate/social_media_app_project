@@ -1,0 +1,3 @@
+[submodule "landing_page/smart-contract/lib/forge-std"]
+	path = landing_page/smart-contract/lib/forge-std
+	url = https://github.com/foundry-rs/forge-std
