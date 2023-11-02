@@ -5,8 +5,10 @@ import Share from '../share/Share'
 import Post from '../posts/Post'
 import axios from 'axios';
 import { AuthContext } from '../../context/AuthContext';
-function Feed({username}) {
+        
+function Feed({username , state}) {
 
+  
   const [posts ,setPosts] = useState([]);
   const {user} = useContext(AuthContext)
 
@@ -30,7 +32,7 @@ function Feed({username}) {
       <div className="feedWrapper">
         { (!username || username === user.username) && <Share />}
         {posts.map((p) => (
-          <Post key={p._id} post={p} />
+          <Post key={p._id} post={p} state={state} />
         ))}
 
       </div>

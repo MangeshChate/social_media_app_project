@@ -41,15 +41,15 @@ function Hero({ state }) {
         <div className='row h-75 p-5 justify-content-center align-items-center'>
           <div className="col-8 d-flex p-5 flex-column justify-content-center mt-5 h-75">
             {state.contract ? (
-              <React.Fragment>
+              <div className='p-5  '>
                 <h1 className='fw-bold mb-3 text-gradient' style={{ fontSize: "7rem" }}>{name}</h1>
                 <div className="wrapper text-secondary">
                   <h4 className='w-75'>
                     {video}
                   </h4>
                 </div>
-                <button className='btn btn-info btn-lg rounded-3 w-50 fs-4 fw-bold shadow mt-5' >Let's Experience</button>
-              </React.Fragment>
+                <button className='btn btn-info  btn-lg border-5 rounded-5 w-50 fs-4 fw-bold shadow mt-5' >Let's Experience</button>
+              </div>
             ) : (
               <div style={{height:"100%"}} className="eth-card container w-100 p-5 rounded-5 d-flex align-items-center justify-content-center  bg-dark" >
                 <h1 className=' fw-bold  text-center ' style={{fontSize:"3em"}}> Connect Metamask to see content.</h1>

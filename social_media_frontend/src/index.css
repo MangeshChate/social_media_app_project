@@ -81,3 +81,31 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
+
+.enhanced-text-item {
+  /* Set a maximum height and enable vertical scrolling */
+  max-height: 100px; /* Adjust the height as needed */
+  overflow-y: auto;
+}
+
+.text-content {
+  /* Prevent text from breaking and hide overflow */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+.modal-backdrop {
+  --bs-backdrop-zindex: -1050;
+  --bs-backdrop-bg: #000;
+  --bs-backdrop-opacity: 0.5;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: var(--bs-backdrop-zindex);
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--bs-backdrop-bg);
+}

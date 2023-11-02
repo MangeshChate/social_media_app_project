@@ -8,7 +8,8 @@ import ChatOnline from '../../components/chatOnline/ChatOnline'
 import { AuthContext } from '../../context/AuthContext'
 import axios from 'axios';
 import { io } from "socket.io-client";
-function Messenger() {
+import TextEnhancer from '../../components/TextEnhancer'
+function Messenger({saveState}) {
 
     const { user } = useContext(AuthContext);
     const [conversations, setConversations] = useState([]);
@@ -16,8 +17,9 @@ function Messenger() {
     const [messages, setMessages] = useState([]);
     const [newMessages, setNewMessages] = useState([]);
     const [arrivalMessages, setArrialMessages] = useState([]);
-    const [onlineUsers , setOnlineUsers] = useState([]);
+    const [onlineUsers, setOnlineUsers] = useState([]);
 
+    const [aiText , setAiText] = useState('');
     // const [socket , setSocket] = useState(null);
     const scrollRef = useRef();
     const socket = useRef();
@@ -36,13 +38,13 @@ function Messenger() {
     useEffect(() => {
         socket.current.emit("addUser", user._id);
         socket.current.on("getUsers", (users) => {
-            setOnlineUsers(user.following.filter(f=>users.some(u=>u.userId === f)));
+            setOnlineUsers(user.following.filter(f => users.some(u => u.userId === f)));
         });
     }, [user]);
 
     useEffect(() => {
         socket.current.on("welcome", (message) => {
-            console.log(message);
+            // console.log(message);
         });
 
         // Clean up the event listener when the component unmounts
@@ -81,11 +83,11 @@ function Messenger() {
 
         getMessages();
     }, [currentChat])
-    console.log(messages)
+    // console.log(messages)
 
 
     useEffect(() => {
-        console.log("currentChat:", currentChat);
+        // console.log("currentChat:", currentChat);
         arrivalMessages && currentChat?.members.includes(arrivalMessages.sender) &&
             setMessages((prev) => [...prev, arrivalMessages]);
 
@@ -121,9 +123,15 @@ function Messenger() {
         scrollRef.current?.scrollIntoView({ behavior: "smooth" });
     }, [messages])
 
+    const enhanceText = () =>{
+        setAiText(newMessages)
+        setNewMessages("");
+    }
+  
+
     return (
         <div className="gradient-bg-welcome vh-100 text-light" >
-            <Topbar />
+            <Topbar saveState={saveState}/>
             <div className='messenger'>
                 <div className="chatMenu">
                     <div className="chatMenuWrapper">
@@ -155,9 +163,13 @@ function Messenger() {
 
 
                                         </div>
-                                        <div className="chatBoxBottom">
-                                            <textarea name="" placeholder='write something...' className='chatMessageInput text-light rounded-5 white-glassmorphism' value={newMessages} onChange={(e) => setNewMessages(e.target.value)}></textarea>
-                                            <Send className='chatSubmitButton fs-2 text-success' onClick={handleSubmit} />
+                                        <div className="chatBoxBottom d-flex gap-3">
+                                        <span className=' bg-primary bg-opacity-50 rounded-5 p-1' style={{cursor:"pointer"}}   onClick={enhanceText} >
+                                                <img src="https://stickerswiki.ams3.cdn.digitaloceanspaces.com/zoobapack/6168298.512.webp" alt="" className='img-fluid ' style={{ width: "54px" }} />
+
+                                            </span>
+                                            <textarea name="" placeholder='write something...' className=' chatMessageInput text-light rounded-5 white-glassmorphism' value={newMessages} onChange={(e) => setNewMessages(e.target.value)}></textarea>
+                                            <Send className='chatSubmitButton fs-1 text-success' onClick={handleSubmit} />
 
                                         </div>
                                     </>
@@ -171,10 +183,18 @@ function Messenger() {
                     </div>
                 </div>
                 <div className="chatOnline p-2 m-3">
+                    <div className="chatOnlineWrapper" style={{ height: "50%" }}>
                     <h4 className='fw-bold'>Avaible For Chat</h4>
-                    <div className="chatOnlineWrapper">
-                        <ChatOnline onlineUsers={onlineUsers} currentId = {user._id} setCurrentChat={setCurrentChat}/>
+                        <ChatOnline onlineUsers={onlineUsers} currentId={user._id} setCurrentChat={setCurrentChat} />
                     </div>
+                    <div className="chatOnlineWrapper blue-glassmorphism p-3" style={{ height: "50%" }}>
+                        <h4 className="fw-bold">Text Perfection through Rabbit AI</h4>
+                        <hr />
+                        <p className="overflow-y-scroll w-100 fs-5 font-monospace " style={{height:"19rem"}}>
+                            <TextEnhancer textMessage={aiText} />
+                        </p>
+                    </div>
+                       
                 </div>
 
             </div>

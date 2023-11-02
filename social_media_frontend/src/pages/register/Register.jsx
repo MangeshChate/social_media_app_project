@@ -6,6 +6,7 @@ import { auth } from '../firebase';
 import { useNavigate } from 'react-router-dom'
 import { Link } from 'react-router-dom';
 import {Button} from '@mui/material'
+import { Verified } from '@mui/icons-material';
 
 function Register() {
 
@@ -58,7 +59,7 @@ function Register() {
 
   useEffect(() => {
     if (user && user.emailVerified) {
-      navigate('/login');
+      console.log("user is verified")
     } else {
       console.log('User is not verified');
     }
@@ -82,7 +83,7 @@ function Register() {
             <input type="password" className="loginInput" minLength={6} placeholder='Password' ref={password} required />
             <input type="password" className="loginInput" placeholder='Password Again' ref={passwordAgain} required />
             {error && <p className="text-danger">{error}</p>}
-            {user && user.emailVerified && <p>Email is verified!</p>}
+            
             <Button className="loginButton mt-4" variant="contained" type="submit">Sign Up</Button>
             <Link to="/login" className='d-flex justify-content-center text-decoration-none'>
 

@@ -10,7 +10,9 @@ function Rightbar({ user }) {
 
   const PF = import.meta.env.VITE_PUBLIC_FOLDER;
   const [friends, setFriends] = useState([]);
+  
   const { user: currentUser, dispatch } = useContext(AuthContext);
+
   const [followed, setFollowed] = useState(currentUser.following.includes(user?._id));
 
 
@@ -56,17 +58,32 @@ function Rightbar({ user }) {
           <span className="birthdayText"><b>Jugal Khandre</b> and <b>3 other friends</b> have a birth day today.</span>
         </div>
        
-        <img src="https://www.levi.in/on/demandware.static/-/Sites-LeviIN-Library/en_IN/dw17b210a1/images/TileBannerpolo.jpg" className='rightbarAd' alt="ad" />
+        <div className=' mt-4'>
+         <div className='eth-card eth shadow rounded-1 shadow-lg  mb-2 ' style={{height:"270px" , width:"100%"}}>
+           <div className="eth-wrapper ">
+             <div className='d-flex justify-content-between align-items-center fw-bold font-monospace'>
+               <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Ethereum-icon-purple.svg/512px-Ethereum-icon-purple.svg.png?20200227011040" alt="" className='img-fluid ' width="60px" />
+               <div> 
+                 
+                   Ethereum Card
+               </div>
+             </div>
+             <div className='eth-profile  d-flex flex-column '>
+               <span className='fw-bold font-monospace '>{currentUser.username}</span>
+               <span className='fw-bold font-monospace text-muted mt-2'>{currentUser.accountNumber}</span>
+             </div>
+ 
+           </div>
+         </div>
+         <img src="https://www.levi.in/on/demandware.static/-/Sites-LeviIN-Library/en_IN/dw17b210a1/images/TileBannerpolo.jpg" className='rightbarAd' alt="ad" />
+        </div>
         
-        <h4 className='rightbarTitle'>Online Friends</h4>
-        <ul className="rightbarFriendList">
-          {
-            Users.map((u => (
-              <Online key={u.id} user={u} />
-            )))
-          }
-
-        </ul>
+        
+        
+         
+ 
+          
+       
       </div>
     )
   }
@@ -82,7 +99,8 @@ function Rightbar({ user }) {
 
           </button>
         )}
-        <h4 className='rightbarTitle'>user Information</h4>
+        
+        <h4 className='rightbarTitle fw-bold'>user Information</h4>
         <div className="rightbarInfo">
           <div className="rightbarInfoItem">
             <span className="rightbarInfoKey">City:</span>
@@ -97,24 +115,29 @@ function Rightbar({ user }) {
             <span className="rightbarInfoValue">{user.relationship === 1 ? "Single" : user.relationship === 2 ? "marrid" : "-"}</span>
           </div>
         </div>
-        <div className='eth-card eth shadow rounded-1 shadow-lg' >
+
+        {user.username === currentUser.username &&(
+         
+        <div className='eth-card eth shadow rounded-1 shadow-lg mt-4 mb-4' >
           <div className="eth-wrapper ">
             <div className='d-flex justify-content-between align-items-center fw-bold font-monospace'>
-              <img src="https://cutewallpaper.org/24/ethereum-logo-png/32-ethereum-logo-transparent-icon-logo-design.png" alt="" className='img-fluid ' width="40px" />
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Ethereum-icon-purple.svg/512px-Ethereum-icon-purple.svg.png?20200227011040" alt="" className='img-fluid ' width="60px" />
               <div> 
                 
-                  carrot card
+                  Ethereum Card
               </div>
             </div>
             <div className='eth-profile  d-flex flex-column'>
-              <span className='fw-bold font-monospace'>mangesh bhaskar chate</span>
-              <span className='fw-bold font-monospace text-muted mt-2'>0x7E8b874gfjd843hr8</span>
+              <span className='fw-bold font-monospace '>{currentUser.username}</span>
+              <span className='fw-bold font-monospace text-muted mt-2'>{currentUser.accountNumber}</span>
             </div>
 
           </div>
 
         </div>
-        <h4 className='rightbarTitle'>User Friends</h4>
+         )}
+
+        <h4 className='rightbarTitle fw-bold'>User Friends</h4>
 
         <div className="rightbarFollowings ">
           {

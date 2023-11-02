@@ -5,13 +5,13 @@ import Feed from '../../components/feed/Feed'
 import Rightbar from '../../components/rightbar/Rightbar'
 import "./home.css"
 
-function Home() {
+function Home({saveState , state}) {
   return (
     <div className='text-light gradient-bg-welcome'>
-      <Topbar />
+      <Topbar saveState={saveState} />
       <div className="homeContainer">
         <Sidebar />
-        <Feed  />
+        <Feed  state={state}/>
         <Rightbar />
 
       </div>

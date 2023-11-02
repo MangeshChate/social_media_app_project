@@ -20,6 +20,10 @@ const UserSchema = new mongoose.Schema({
         min:6
         
     },
+    accountNumber:{
+        type:String,
+        
+    },
     profilePicture:{
         type:String,
         default:""

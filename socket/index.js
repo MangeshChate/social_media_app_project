@@ -7,7 +7,11 @@ const { GoogleAuth } = require("google-auth-library");
 
 const app = express();
 const server = http.createServer(app);
-const io = new Server(server);
+const io = new Server(server ,{
+    cors: {
+    origin: '*',
+  }});
+
 
 const MODEL_NAME = "models/chat-bison-001";
 const API_KEY = process.env.API_KEY;
@@ -49,7 +53,7 @@ io.on("connection", (socket) => {
     // Send and get message
     socket.on("sendMessge", ({ senderId, reciverId, text }) => {
         const user = getUser(reciverId);
-        io.to(user.socketId).emit("getMessage", {
+        io.to(user?.socketId).emit("getMessage", {
             senderId,
             text
         });
@@ -69,7 +73,7 @@ io.on("connection", (socket) => {
             temperature: 0.5,
             candidateCount: 1,
             prompt: {
-                context: "Respond all questions just like a friend or buddy and talk about blockchain and facts",
+                context: "Respond all questions just like a friend or buddy",
                 examples: [
                     {
                         input: { content: "what is your name and how are you?" },

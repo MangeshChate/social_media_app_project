@@ -1,12 +1,13 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import cyberbg from '../assets/cyberpunk-bg.gif'
 import { ArrowBack, ArrowForward, ForkRight, Login, OneK } from '@mui/icons-material'
 import { Link } from 'react-router-dom'
-function Wallet() {
+import ConnectButton from './ConnectButton'
 
+import axios from 'axios'
+import SaveButton from './SaveButton'
+function Wallet({state , saveState}) {
 
-
-    
 
 
 
@@ -44,9 +45,12 @@ function Wallet() {
                                     <span >Step 1: <span className='ms-3'>Install MetaMask Extension</span></span>
                                     <span>Step 2: <span className="ms-3"> Set Up a Wallet</span> </span>
                                     <span>Step 3: <span className="ms-3">Connect to RabbitChat</span> </span>
-                                    <span>Step 4:
-                                        <button className='btn btn-primary bg-primary bg-opacity-25  rounded-5 shadow  ms-4 fw-bold  '>Connect Metamask</button>
-                                    </span>
+                                    <div className='d-flex align-items-center gap-3 fw-bold font-monospace'>
+                                        <span>Step 4:</span>
+                                       <ConnectButton saveState={saveState}/>
+                                       <SaveButton state={state} />
+
+                                    </div>
                                 </div>
 
                             </div>

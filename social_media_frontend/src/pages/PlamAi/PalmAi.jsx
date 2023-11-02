@@ -64,7 +64,7 @@ function PalmAi() {
                     <div className="aiSuggestWrapper p-3 " >
                         <div className="brand d-flex align-items-center">
                             <img src="https://stickerswiki.ams3.cdn.digitaloceanspaces.com/zoobapack/6168298.512.webp" alt="" className='rabbitlogo object-fit-cover' style={{ width: "80px" }} />
-                            <div>
+                            <div> 
                                 <span className='text-light fw-bold fs-3 font-monospace'>Rabbit AI</span>
                                 <p className='text-light font-monospace text-secondary fw-semibold'>powered by PaLM 2</p>
                             </div>

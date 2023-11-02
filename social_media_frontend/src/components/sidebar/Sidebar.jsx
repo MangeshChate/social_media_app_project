@@ -1,10 +1,16 @@
 import React from 'react'
 import "./sidebar.css"
-import { Bookmark, Chat, Event, Group, HailTwoTone, QuestionMarkRounded, RssFeed, School, VideoCallRounded, Work, WorkHistory } from "@mui/icons-material";
+import { Bookmark, Chat, Event, Group, HailTwoTone, Logout, QuestionMarkRounded, RssFeed, School, VideoCallRounded, Work, WorkHistory } from "@mui/icons-material";
 import CloseFriend from '../closeFriend/CloseFriend';
 import { Users } from '../../dummyData'
 import { Link } from 'react-router-dom';
+import { Button } from '@mui/material';
 function Sidebar() {
+    const handleLogOut = () => {
+        localStorage.removeItem('user');
+        location.reload();
+    }
+
     return (
         <div className='sideBar gradient-bg-transactions '>
             <div className="sidebarWrapper">
@@ -46,29 +52,31 @@ function Sidebar() {
 
                 </ul>
                 <hr />
-                
-                    <Link to="/rabbitai" className="sidebarListItem text-decoration-none text-light btn  btn-outline-info mt-4 rounded-3 shadow font-monospace">
 
-                        <img src="https://stickerswiki.ams3.cdn.digitaloceanspaces.com/zoobapack/6168298.512.webp" className='sidebarIconImg' alt="" />
-                        <span className="sidebarListItemText fw-bold ">Talk with Rabbit AI</span>
-                    </Link>
+                <Link to="/furryfeeds" className="m-3  text-decoration-none text-light btn  btn-outline-info  rounded-3 shadow font-monospace d-flex align-items-center">
 
-              
+                    <img src="https://cdn-icons-png.flaticon.com/512/802/802338.png" alt="" className='img-fluid object-fit-cover' style={{ height: "44px" }} />
+                    <span span className="sidebarListItemText fw-bold ms-3" >Web 3.0 FurryFeeds</span >
+                </Link>
 
-                
-                <button className="sidebarButton">Show More</button>
-                {/* <hr className='sidebarHr' />
-                <ul className="sidebarFriendList">
-                    {Users.map((u) => (
 
-                        <CloseFriend key={u.id} user={u} />
-                    ))}
+                <Link to="/rabbitai" className="m-3  text-decoration-none text-light btn  btn-outline-info  rounded-3 shadow font-monospace d-flex align-items-center">
 
-                </ul> */}
+                    <img src="https://stickerswiki.ams3.cdn.digitaloceanspaces.com/zoobapack/6168298.512.webp" className='sidebarIconImg' alt="" />
+                    <span className="sidebarListItemText fw-bold ">Talk with Rabbit AI</span>
+                </Link>
+
+
+                <hr />
+
+                <Button variant="contained" className='mt-5 bg-danger shadow  d-flex justify-content-center align-align-items-center gap-3   shadow-lg  bg-opacity-25 ' onClick={handleLogOut}>
+                    <span>Logout</span>
+                    <Logout sx={{ fontSize: "1.2em" }} />
+                </Button>
             </div>
         </div>
     )
 }
 
 export default Sidebar
-Sidebar
+
