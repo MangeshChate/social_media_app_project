@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import Topbar from '../../components/topbar/Topbar'
-import { Add, AddRounded } from '@mui/icons-material'
+import { Add, AddRounded, Image, Send } from '@mui/icons-material'
 import ThoughtEnhancer from '../../components/ThoughtEnhancer';
 import { AuthContext } from '../../context/AuthContext';
 
@@ -22,7 +22,8 @@ function Furryfeeds({ state, saveState }) {
             setFurryFeed(res);
         }
         contract && feeds();
-    }, [state])
+    }, [state]);
+    
     const sendTweet = async (e) => {
         e.preventDefault();
         try {
@@ -90,8 +91,10 @@ function Furryfeeds({ state, saveState }) {
                         <div className='m-4 d-flex gap-4 align-items-center justify-content-center'>
                             <img src="https://altcoinsbox.com/wp-content/uploads/2023/03/magic-logo.png" alt="" style={{ width: "64px", cursor: "pointer" }} onClick={handleAi} />
                             <textarea className='p-3  font-monospace fs-5 bg-light rounded-4 bg-opacity-50  form-control text-dark' placeholder='Start Writing your FurreyFeeds From Here' value={tweet} onChange={(e) => setTweet(e.target.value)} ></textarea>
-                            <span className='bg-success p-3 ' onClick={sendTweet} style={{ borderRadius: "50%", cursor: "pointer" }} >
-                                <AddRounded className='fs-1' />
+
+                            
+                            <span className=' p-1 ' onClick={sendTweet} style={{ borderRadius: "50%", cursor: "pointer" }} >
+                                <Send className='fs-1' />
 
                             </span>
 
@@ -119,6 +122,7 @@ function Furryfeeds({ state, saveState }) {
                                             <p>
                                                 {feed.essay}
                                             </p>
+                                           
                                         </div>
                                     </div>
                                 </div>

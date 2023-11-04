@@ -1,16 +1,18 @@
-import React, { useContext, useEffect, useState, } from 'react'
+import React, { useContext, useEffect, useRef, useState, } from 'react'
 import "./rightbar.css"
-import { Add, Remove, SettingsEthernet } from "@mui/icons-material"
+import { Add, CopyAll, Remove, SettingsEthernet } from "@mui/icons-material"
 import { Users } from "../../dummyData"
 import Online from '../online/Online'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import { AuthContext } from '../../context/AuthContext'
-function Rightbar({ user }) {
+import CopyButton from '../CopyButton'
+
+function Rightbar({ user , state }) {
 
   const PF = import.meta.env.VITE_PUBLIC_FOLDER;
   const [friends, setFriends] = useState([]);
-  
+
   const { user: currentUser, dispatch } = useContext(AuthContext);
 
   const [followed, setFollowed] = useState(currentUser.following.includes(user?._id));
@@ -48,6 +50,35 @@ function Rightbar({ user }) {
     }
   }
 
+  //send transaction
+  const amount = useRef()
+  const to = useRef()
+  const message = useRef()
+  
+  const handleEnter = async (e) =>{
+    e.preventDefault();
+console.log(handleEnter)
+    try {
+      const { contract, web3 } = state;
+      const weiValue = web3.utils.toWei(amount.current.value, "ether");
+      const accounts = await web3.eth.getAccounts();
+
+      await contract.methods.sendEther(to.current.value, message.current.value).send({
+          from: accounts[0],
+          value: weiValue,
+          gas: 325666,
+      });
+
+      alert("Transaction Successful!");
+      
+      
+  } catch (error) {
+      alert("Transaction not successful!");
+      console.log(error);
+  }
+
+  }
+
 
   const HomeRightbar = () => {
     return (
@@ -57,33 +88,43 @@ function Rightbar({ user }) {
           <img src="https://cdn-icons-png.flaticon.com/512/6021/6021967.png" className='birthdayImg' alt="" />
           <span className="birthdayText"><b>Jugal Khandre</b> and <b>3 other friends</b> have a birth day today.</span>
         </div>
-       
+
         <div className=' mt-4'>
-         <div className='eth-card eth shadow rounded-1 shadow-lg  mb-2 ' style={{height:"270px" , width:"100%"}}>
-           <div className="eth-wrapper ">
-             <div className='d-flex justify-content-between align-items-center fw-bold font-monospace'>
-               <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Ethereum-icon-purple.svg/512px-Ethereum-icon-purple.svg.png?20200227011040" alt="" className='img-fluid ' width="60px" />
-               <div> 
-                 
-                   Ethereum Card
-               </div>
-             </div>
-             <div className='eth-profile  d-flex flex-column '>
-               <span className='fw-bold font-monospace '>{currentUser.username}</span>
-               <span className='fw-bold font-monospace text-muted mt-2'>{currentUser.accountNumber}</span>
-             </div>
- 
-           </div>
-         </div>
-         <img src="https://www.levi.in/on/demandware.static/-/Sites-LeviIN-Library/en_IN/dw17b210a1/images/TileBannerpolo.jpg" className='rightbarAd' alt="ad" />
+          <div className='eth-card eth shadow rounded-1 shadow-lg  mb-2 ' style={{ height: "270px", width: "100%" }}>
+            <div className="eth-wrapper ">
+              <div className='d-flex justify-content-between align-items-center fw-bold font-monospace'>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Ethereum-icon-purple.svg/512px-Ethereum-icon-purple.svg.png?20200227011040" alt="" className='img-fluid ' width="60px" />
+                <div>
+
+                  Ethereum Card
+                </div>
+              </div>
+              <div className='eth-profile  d-flex flex-column '>
+                <span className='fw-bold font-monospace '>{currentUser.username}</span>
+                {currentUser.accountNumber ? (
+                  <div>
+
+                    <span className='fw-bold font-monospace text-muted mt-2' id="textToCopy" >
+                      {currentUser.accountNumber}
+                    </span>
+                    <CopyButton text={currentUser.accountNumber} />
+                  </div>
+                ) : (
+                  <span className='fw-bold font-monospace text-muted mt-2'>(User doesn't have a MetaMask account)</span>
+                )}
+              </div>
+
+            </div>
+          </div>
+          <img src="https://www.levi.in/on/demandware.static/-/Sites-LeviIN-Library/en_IN/dw17b210a1/images/TileBannerpolo.jpg" className='rightbarAd' alt="ad" />
         </div>
-        
-        
-        
-         
- 
-          
-       
+
+
+
+
+
+
+
       </div>
     )
   }
@@ -99,7 +140,7 @@ function Rightbar({ user }) {
 
           </button>
         )}
-        
+
         <h4 className='rightbarTitle fw-bold'>user Information</h4>
         <div className="rightbarInfo">
           <div className="rightbarInfoItem">
@@ -116,28 +157,39 @@ function Rightbar({ user }) {
           </div>
         </div>
 
-        {user.username === currentUser.username &&(
-         
+
+
         <div className='eth-card eth shadow rounded-1 shadow-lg mt-4 mb-4' >
           <div className="eth-wrapper ">
             <div className='d-flex justify-content-between align-items-center fw-bold font-monospace'>
               <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Ethereum-icon-purple.svg/512px-Ethereum-icon-purple.svg.png?20200227011040" alt="" className='img-fluid ' width="60px" />
-              <div> 
-                
-                  Ethereum Card
+              <div>
+
+                Ethereum Card
               </div>
             </div>
             <div className='eth-profile  d-flex flex-column'>
-              <span className='fw-bold font-monospace '>{currentUser.username}</span>
-              <span className='fw-bold font-monospace text-muted mt-2'>{currentUser.accountNumber}</span>
+              <span className='fw-bold font-monospace '>{user.username}</span>
+              {user.accountNumber ? (
+                <div>
+
+                  <span className='fw-bold font-monospace text-muted mt-2' id="textToCopy" >
+                    {user.accountNumber}
+                  </span>
+                  <CopyButton text={user.accountNumber} />
+                </div>
+              ) : (
+                <span className='fw-bold font-monospace text-muted mt-2'>(User doesn't have a MetaMask account)</span>
+              )}
+
             </div>
 
           </div>
 
         </div>
-         )}
 
-        <h4 className='rightbarTitle fw-bold'>User Friends</h4>
+
+        <h4 className='rightbarTitle mt-5 fw-bold'>User Friends</h4>
 
         <div className="rightbarFollowings ">
           {
@@ -153,6 +205,23 @@ function Rightbar({ user }) {
 
 
         </div>
+        {user.username == currentUser.username && (
+          <>
+        <h4 className='rightbarTitle mt-4  fw-bold'>Send Ether's to Your Friend</h4>
+         
+          <form onSubmit={handleEnter} className="pt-4 w-100 p-3 d-flex flex-column gap-3 justify-content-start font-monospace">
+            <input type="text" className="form-control p-3 rounded-2 bg-light text-light bg-opacity-10 border-0" placeholder='Enter Amount Of Ether' ref={amount} required/>
+            <input type="text" className="form-control p-3 rounded-2 bg-light text-light bg-opacity-10 border-0" placeholder='Paste Friend Account Number ' ref={to} required/>
+            <input type="text" className="form-control p-3 rounded-2 bg-light text-light bg-opacity-10 border-0" placeholder='Enter Message' ref={message} required/>
+
+
+            <button type="submit" className="btn bg-danger text-light fw-bold bg-opacity-25 rounded-5 text-center">Send transaction</button>
+
+          </form>
+          </>
+
+         
+        )}
 
 
       </div>

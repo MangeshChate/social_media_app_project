@@ -18,7 +18,7 @@ function ConnectButton({ saveState }) {
       });
       const contract = new web3.eth.Contract(
         ABI,
-        '0xe8bA3C58f63b022B84b3bDc80C5b7cF0464Acc98'
+        '0xBDFdb3524A125Ad036D62A399797092831ef5477'
       );
       setConnected(false);
       saveState({ web3: web3, contract: contract });

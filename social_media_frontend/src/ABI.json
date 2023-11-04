@@ -38,45 +38,32 @@
 	{
 		"inputs": [
 			{
-				"internalType": "address payable",
-				"name": "user",
-				"type": "address"
-			},
-			{
-				"internalType": "string",
-				"name": "name",
-				"type": "string"
-			}
-		],
-		"name": "sendEther",
-		"outputs": [],
-		"stateMutability": "payable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "string",
-				"name": "name",
-				"type": "string"
-			},
-			{
-				"internalType": "string",
-				"name": "avatar",
-				"type": "string"
-			},
-			{
 				"internalType": "string",
 				"name": "account",
 				"type": "string"
 			},
 			{
 				"internalType": "string",
-				"name": "essay",
+				"name": "title",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "description",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "videoUrl",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "thumbnail",
 				"type": "string"
 			}
 		],
-		"name": "setEssay",
+		"name": "addTube",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
@@ -162,51 +149,44 @@
 	},
 	{
 		"inputs": [],
-		"name": "getTransactionCount",
+		"name": "getTube",
 		"outputs": [
 			{
-				"internalType": "uint256",
+				"components": [
+					{
+						"internalType": "string",
+						"name": "account",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "title",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "description",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "videoUrl",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "thumbnail",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "timestamp",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct EtherSender.RabbiTube[]",
 				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "index",
-				"type": "uint256"
-			}
-		],
-		"name": "getTransactionDetails",
-		"outputs": [
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			},
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			},
-			{
-				"internalType": "string",
-				"name": "",
-				"type": "string"
-			},
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
+				"type": "tuple[]"
 			}
 		],
 		"stateMutability": "view",
@@ -223,6 +203,52 @@
 			}
 		],
 		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address payable",
+				"name": "user",
+				"type": "address"
+			},
+			{
+				"internalType": "string",
+				"name": "name",
+				"type": "string"
+			}
+		],
+		"name": "sendEther",
+		"outputs": [],
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "name",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "avatar",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "account",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "essay",
+				"type": "string"
+			}
+		],
+		"name": "setEssay",
+		"outputs": [],
+		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
@@ -254,6 +280,50 @@
 				"internalType": "uint256",
 				"name": "amount",
 				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "timestamp",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "tubes",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "account",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "title",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "description",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "videoUrl",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "thumbnail",
+				"type": "string"
 			},
 			{
 				"internalType": "uint256",

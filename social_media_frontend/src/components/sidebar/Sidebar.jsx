@@ -31,14 +31,7 @@ function Sidebar() {
                         <Group className='sidebarIcon' />
                         <span className="sidebarListItemText">Groups</span>
                     </li>
-                    <li className="sidebarListItem">
-                        <Bookmark className='sidebarIcon' />
-                        <span className="sidebarListItemText">Bookmarks</span>
-                    </li>
-                    <li className="sidebarListItem">
-                        <QuestionMarkRounded className='sidebarIcon' />
-                        <span className="sidebarListItemText">Questions</span>
-                    </li>
+              
                     <li className="sidebarListItem">
                         <WorkHistory className='sidebarIcon' />
                         <span className="sidebarListItemText">Jobs</span>
@@ -52,6 +45,11 @@ function Sidebar() {
 
                 </ul>
                 <hr />
+                <Link to="/rabitube" className="m-3  text-decoration-none text-light btn  btn-outline-info  rounded-3 shadow font-monospace d-flex align-items-center">
+
+                    <img src="https://cdn-icons-png.flaticon.com/512/802/802338.png" alt="" className='img-fluid object-fit-cover' style={{ height: "44px" }} />
+                    <span span className="sidebarListItemText fw-bold ms-3" >Web 3.0 RabiTube</span >
+                </Link>
 
                 <Link to="/furryfeeds" className="m-3  text-decoration-none text-light btn  btn-outline-info  rounded-3 shadow font-monospace d-flex align-items-center">
 

@@ -6,7 +6,7 @@ import Rightbar from '../../components/rightbar/Rightbar'
 import Feed from '../../components/feed/Feed'
 import axios from 'axios';
 import { useParams } from 'react-router'
-function Profile() {
+function Profile({state , saveState}) {
     const PF = import.meta.env.VITE_PUBLIC_FOLDER;
 
   
@@ -25,7 +25,7 @@ function Profile() {
     }, [username])
     return (
         <div className='text-light gradient-bg-welcome'>
-            <Topbar />
+            <Topbar saveState={saveState}/>
             <div className="profile">
                 <Sidebar />
                 <div className="profileRight">
@@ -42,7 +42,7 @@ function Profile() {
                     </div>
                     <div className="profileRightBottom">
                         <Feed username={username}/>
-                        <Rightbar user={user}/>
+                        <Rightbar user={user} state={state}/>
 
                     </div>
 
