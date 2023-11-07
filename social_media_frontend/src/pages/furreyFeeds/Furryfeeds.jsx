@@ -58,7 +58,7 @@ function Furryfeeds({ state, saveState }) {
 
     return (
         <div className='  gradient-bg-welcome  text-light' style={{ height: "106vh" }}>
-            <Topbar saveState={saveState} />
+            <Topbar saveState={saveState} path={true}/>
             <div className="row vw-100 " style={{ height: "90vh" }}>
                 <div className="col-3  p-3 overflow-y-scroll">
                     <div className='d-flex justify-content-center align-items-center flex-column gap-4 mt-4'>

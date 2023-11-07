@@ -5,39 +5,45 @@ import Web3 from 'web3';
 import { AuthContext } from '../context/AuthContext';
 import axios from 'axios';
 
-function ConnectButton({ saveState }) {
+function ConnectButton({ saveState  , path}) {
+
   const { user } = useContext(AuthContext);
-  
+
   const [ownerAddress, setOwnerAddress] = useState('');
   const [connected, setConnected] = useState(true);
-  const init = async () => {
-    try {
-      const web3 = new Web3(window.ethereum);
-      await window.ethereum.request({
-        method: 'eth_requestAccounts',
-      });
-      const contract = new web3.eth.Contract(
-        ABI,
-        '0xBDFdb3524A125Ad036D62A399797092831ef5477'
-      );
-      setConnected(false);
-      saveState({ web3: web3, contract: contract });
 
-      const ownerAddr = await contract.methods.owner().call();
-      setOwnerAddress(ownerAddr);
-    } catch (error) {
-      alert('Please Install Metamask! Already installed, then there may be an "Internal Server Error".');
-      console.error(error);
-    }
-  
+  if(path){
 
-  // Use a useEffect to log ownerAddress when it's updated and make Axios PUT request
+    useEffect(() => {
   
-}
+      const init = async () => {
+        try {
+          const web3 = new Web3(window.ethereum);
+          await window.ethereum.request({
+            method: 'eth_requestAccounts',
+          });
+          const contract = new web3.eth.Contract(
+            ABI,
+            '0xBDFdb3524A125Ad036D62A399797092831ef5477'
+          );
+          setConnected(false);
+          saveState({ web3: web3, contract: contract });
+  
+          const ownerAddr = await contract.methods.owner().call();
+          setOwnerAddress(ownerAddr);
+        } catch (error) {
+          alert('Please Connect Metamask ! .');
+          console.error(error);
+        }
+      }
+      init();
+    },[])
+  }
+
 
 
   return (
-    <Button variant="outlined" sx={{ display: 'flex', alignItems: 'center', gap: '10px' }} className='text-light rounded-5' disabled={!connected} onClick={init}>
+    <Button variant="outlined" sx={{ display: 'flex', alignItems: 'center', gap: '10px' }} className='text-light rounded-5' disabled={!connected} >
       <span>{connected ? 'Connect' : 'Connected'}</span>
       <img
         src={

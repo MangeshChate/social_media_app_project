@@ -14,9 +14,11 @@ function SaveButton({ state }) {
 
     const saveAccount= async() => {
 
-        const ownerAddr = await contract.methods.owner().call();
+      const accounts = await web3.eth.getAccounts();
+
+        console.log(accounts[0])
         axios.put(`http://localhost:8800/api/users/${user._id}`, {
-            accountNumber: ownerAddr,
+            accountNumber: accounts[0],
             userId: user._id,
           })
           .then((response) => {

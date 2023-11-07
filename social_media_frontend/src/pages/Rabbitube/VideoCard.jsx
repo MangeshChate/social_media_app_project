@@ -26,7 +26,8 @@ function VideoCard({account , title, description , videoUrl ,thumbnail ,  timest
                     </div>
 
                     <span>
-                        <h5 className='fw-bold '>{title}</h5>
+                    <h5 className='fw-bold'>{title.length > 25 ? title.slice(0, 31) + '...' : title}</h5>
+
                         <span className='text-secondary  ' style={{ fontSize: "0.9rem" }}>{account}</span>
                     </span>
                 </div>

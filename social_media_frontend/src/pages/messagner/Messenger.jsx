@@ -131,7 +131,7 @@ function Messenger({saveState}) {
 
     return (
         <div className="gradient-bg-welcome vh-100 text-light" >
-            <Topbar saveState={saveState}/>
+            <Topbar saveState={saveState} path={false}/>
             <div className='messenger'>
                 <div className="chatMenu">
                     <div className="chatMenuWrapper">

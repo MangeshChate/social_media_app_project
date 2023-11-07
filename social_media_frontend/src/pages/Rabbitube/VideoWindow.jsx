@@ -25,7 +25,7 @@ const storedTimestamp = localStorage.getItem("timestamp");
     return (
         <div>
             <div className='vw-100 vh-100 gradient-bg-welcome text-light'>
-                <Topbar />
+                <Topbar path={false}/>
                 <div className='d-flex  align-items-center justify-content-between p-4 '>
                 <Link to="/rabitube" className="text-light text-decoration-none d-flex">
                     <img

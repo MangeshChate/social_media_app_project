@@ -35,13 +35,13 @@ function App() {
     <Router>
 
       <Routes>
-        <Route exact path="/" element={<>{user ? <Home saveState={saveState} state={state}/> : <Register />}</>} />
+        <Route exact path="/" element={<>{user ? <Home saveState={saveState}  state={state}/> : <Register />}</>} />
         <Route exact path="/login" element={<>{user ? <Navigate to="/" /> : <Login />}</>} />
         <Route exact path="/profile/:username" element={user ? <Profile  state={state}  saveState={saveState}/> : <Register />} />
         <Route exact path="/register" element={<>{user ? <Navigate to="/" /> : <Register />}</>} />
 
         <Route exact path="/messenger" element={<>{!user ? <Navigate to="/" /> : <Messenger />}</>} />
-        <Route exact path="/RabbitAi" element={<>{!user ? <Navigate to="/" /> : <PalmAi />}</>} />
+        <Route exact path="/RabbitAi" element={<>{!user ? <Navigate to="/" /> : <PalmAi state={state} saveState={saveState}/>}</>} />
         <Route exact path="/furryfeeds" element={<>{!user ? <Navigate to="/" /> :  <Furryfeeds state={state} saveState={saveState}/>}</>} />
 
         <Route exact path="/rabitube" element={<>{!user ? <Navigate to="/" /> :  <RabbiTube state={state} saveState={saveState}/>}</>} />

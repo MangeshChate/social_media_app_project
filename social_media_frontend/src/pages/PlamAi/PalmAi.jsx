@@ -5,7 +5,8 @@ import io from 'socket.io-client';
 const socket = io('http://localhost:8900');
 import './palmAi.css'
 import avatar from '../../../assets/avatar.gif'
-function PalmAi() {
+function PalmAi({state , saveState}) {
+
     const [message, setMessage] = useState('');
     const [chat, setChat] = useState([]);
     const scrollRef = useRef();
@@ -58,7 +59,7 @@ function PalmAi() {
 
     return (
         <div className='vh-100  gradient-bg-welcome text-light'>
-            <Topbar />
+            <Topbar path={false}/>
             <div className="chatai row  " style={{ height: "90%" }}>
                 <div className="aiSuggest col-2 " style={{ borderRight: "1px solid grey" }}>
                     <div className="aiSuggestWrapper p-3 " >

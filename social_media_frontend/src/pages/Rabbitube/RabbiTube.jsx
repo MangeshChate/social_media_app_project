@@ -27,7 +27,7 @@ function RabbiTube({ state, saveState }) {
     const [tubes, setTubes] = useState([]);
     // const thumbnailListRef = ref(storage, 'thumbnails/');
     // const videoListRef = ref(storage, 'videos/');
-    const [desAi , setDesAi] = useState('');
+    const [desAi, setDesAi] = useState('');
 
 
 
@@ -66,6 +66,7 @@ function RabbiTube({ state, saveState }) {
                             .send({ from: accounts[0] })
                             .then(() => {
                                 alert("Successfully, Share Video on Blockchain!");
+                                window.location.reload();
                             })
                             .catch((error) => {
                                 alert("Transaction not successful!");
@@ -99,15 +100,15 @@ function RabbiTube({ state, saveState }) {
 
 
 
-const handleDes = () =>{
-    setDesAi(description);
-}
+    const handleDes = () => {
+        setDesAi(description);
+    }
 
 
 
     return (
         <div className="vw-100 vh-100 overflow-y-scroll gradient-bg-welcome text-light">
-            <Topbar saveState={saveState} />
+            <Topbar saveState={saveState} path={true}/>
             <div className="d-flex align-items-center justify-content-between p-5">
                 <Link to="/rabitube" className="text-light text-decoration-none d-flex">
                     <img
@@ -126,10 +127,10 @@ const handleDes = () =>{
                         className=" me-5"
                         data-bs-toggle="modal"
                         data-bs-target="#exampleModal"
-                        style={{ cursor: "pointer" ,fontSize:"3rem" }}
+                        style={{ cursor: "pointer", fontSize: "3rem" }}
                     />
 
-                    <div className="modal fade" id="exampleModal" tabIndex="-1"  aria-labelledby="exampleModalLabel" aria-hidden="true" style={{ zIndex: 1050 }}>
+                    <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style={{ zIndex: 1050 }}>
                         <div className="modal-dialog modal-dialog-centered modal-xl h-100">
                             <div className=" blue-glassmorphism d-flex w-100  " >
                                 <div className="modal-content white-glassmorphism border-0 rounded-0   w-50">
@@ -175,23 +176,23 @@ const handleDes = () =>{
                                         </div>
 
                                     </div>
-                                    
+
                                 </div>
                                 <div className="white-glassmorphism modal-content border-0 rounded-0 w-50">
                                     <div className="p-4 d-flex flex-column align-items-center">
-                                       
-                                            <img src="https://cdn-icons-png.flaticon.com/512/802/802338.png" alt="" className='img-fluid object-fit-cover  'style={{width:"84px" , height:"84px",cursor:"pointer" }} onClick={handleDes}/>
-                                            <div className='m-4 w-100 rounded-5  bg-dark bg-opacity-75 text-light p-3 ' style={{height:"400px"}}>
+
+                                        <img src="https://cdn-icons-png.flaticon.com/512/802/802338.png" alt="" className='img-fluid object-fit-cover  ' style={{ width: "84px", height: "84px", cursor: "pointer" }} onClick={handleDes} />
+                                        <div className='m-4 w-100 rounded-5  bg-dark bg-opacity-75 text-light p-3 ' style={{ height: "400px" }}>
                                             <p className='h-100 fs-5 font-monospace overflow-y-scroll'>
-                                                <DescriptionEnhance textMessage={desAi}/>
-                                                
+                                                <DescriptionEnhance textMessage={desAi} />
+
                                             </p>
-                                            </div>
-                                       
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>
-                                    
+
                         </div>
                     </div>
                 </div>

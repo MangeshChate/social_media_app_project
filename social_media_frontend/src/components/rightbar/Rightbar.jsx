@@ -1,14 +1,15 @@
 import React, { useContext, useEffect, useRef, useState, } from 'react'
 import "./rightbar.css"
-import { Add, CopyAll, Remove, SettingsEthernet } from "@mui/icons-material"
+import { Add, Chat, CopyAll, Remove, SettingsEthernet } from "@mui/icons-material"
 import { Users } from "../../dummyData"
 import Online from '../online/Online'
 import axios from 'axios'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../../context/AuthContext'
-import CopyButton from '../CopyButton'
+import CopyButton from '../CopyButton';
+import {} from "react-router-dom"
 
-function Rightbar({ user , state }) {
+function Rightbar({ user, state }) {
 
   const PF = import.meta.env.VITE_PUBLIC_FOLDER;
   const [friends, setFriends] = useState([]);
@@ -17,6 +18,7 @@ function Rightbar({ user , state }) {
 
   const [followed, setFollowed] = useState(currentUser.following.includes(user?._id));
 
+  const navigate = useNavigate();
 
 
   useEffect(() => {
@@ -54,29 +56,48 @@ function Rightbar({ user , state }) {
   const amount = useRef()
   const to = useRef()
   const message = useRef()
-  
-  const handleEnter = async (e) =>{
+
+  const handleEnter = async (e) => {
     e.preventDefault();
-console.log(handleEnter)
+    console.log(handleEnter)
     try {
       const { contract, web3 } = state;
       const weiValue = web3.utils.toWei(amount.current.value, "ether");
       const accounts = await web3.eth.getAccounts();
 
       await contract.methods.sendEther(to.current.value, message.current.value).send({
-          from: accounts[0],
-          value: weiValue,
-          gas: 325666,
+        from: accounts[0],
+        value: weiValue,
+        gas: 325666,
       });
 
       alert("Transaction Successful!");
-      
-      
-  } catch (error) {
+
+
+    } catch (error) {
       alert("Transaction not successful!");
       console.log(error);
+    }
+
   }
 
+  //handle conversation 
+  const handleConversation = async () => {
+
+    const conversation = {
+      "senderId": currentUser._id,
+      "reciverId": user._id
+    }
+
+
+    try {
+      await axios.post("http://localhost:8800/api/conversations", conversation);
+      console.log("conversation added succesfully !");
+      navigate("/messenger");
+
+    } catch (err) {
+      console.log(err)
+    }
   }
 
 
@@ -133,12 +154,15 @@ console.log(handleEnter)
     return (
       <div className=''>
         {user.username !== currentUser.username && (
-          <button className="rightbarFollowButton" onClick={handleClick}>
-            {followed ? "Unfollow" : "Follow"}
-            {followed ? <Remove /> : <Add />}
+          <div className='d-flex justify-content-between align-items-center '>
+            <button className="rightbarFollowButton" onClick={handleClick}>
+              {followed ? "Unfollow" : "Follow"}
+              {followed ? <Remove /> : <Add />}
 
 
-          </button>
+            </button>
+            <Chat className='mt-5 me-5 text-opacity-10 fw-bold fs-1' onClick={handleConversation} style={{ cursor: "pointer" }} />
+          </div>
         )}
 
         <h4 className='rightbarTitle fw-bold'>user Information</h4>
@@ -207,20 +231,20 @@ console.log(handleEnter)
         </div>
         {user.username == currentUser.username && (
           <>
-        <h4 className='rightbarTitle mt-4  fw-bold'>Send Ether's to Your Friend</h4>
-         
-          <form onSubmit={handleEnter} className="pt-4 w-100 p-3 d-flex flex-column gap-3 justify-content-start font-monospace">
-            <input type="text" className="form-control p-3 rounded-2 bg-light text-light bg-opacity-10 border-0" placeholder='Enter Amount Of Ether' ref={amount} required/>
-            <input type="text" className="form-control p-3 rounded-2 bg-light text-light bg-opacity-10 border-0" placeholder='Paste Friend Account Number ' ref={to} required/>
-            <input type="text" className="form-control p-3 rounded-2 bg-light text-light bg-opacity-10 border-0" placeholder='Enter Message' ref={message} required/>
+            <h4 className='rightbarTitle mt-4  fw-bold'>Send Ether's to Your Friend</h4>
+
+            <form onSubmit={handleEnter} className="pt-4 w-100 p-3 d-flex flex-column gap-3 justify-content-start font-monospace">
+              <input type="text" className="form-control p-3 rounded-2 bg-light text-light bg-opacity-50 border-0" placeholder='Enter Amount Of Ether' ref={amount} required />
+              <input type="text" className="form-control p-3 rounded-2 bg-light text-light bg-opacity-50 border-0" placeholder='Paste Friend Account Number ' ref={to} required />
+              <input type="text" className="form-control p-3 rounded-2 bg-light text-light bg-opacity-50 border-0" placeholder='Enter Message' ref={message} required />
 
 
-            <button type="submit" className="btn bg-danger text-light fw-bold bg-opacity-25 rounded-5 text-center">Send transaction</button>
+              <button type="submit" className="btn bg-danger text-light fw-bold bg-opacity-25 rounded-5 text-center">Send transaction</button>
 
-          </form>
+            </form>
           </>
 
-         
+
         )}
 
 

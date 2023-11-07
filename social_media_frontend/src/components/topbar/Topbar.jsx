@@ -5,12 +5,12 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
 import { Button } from '@mui/material';
 import ConnectButton from '../../pages/ConnectButton';
-function Topbar({saveState}) {
+function Topbar({saveState , path}) {
 
   const {user} = useContext(AuthContext);
   const PF = import.meta.env.VITE_PUBLIC_FOLDER;
 
-
+  console.log(path)
  
 
   return (
@@ -33,7 +33,9 @@ function Topbar({saveState}) {
 
         </div>
         <div className="topbarIcons ">
-        <ConnectButton saveState={saveState}/>
+
+        <ConnectButton saveState={saveState} path={path}/>
+
         </div>
         <Link to={`/profile/${user.username}`}>
         <img 

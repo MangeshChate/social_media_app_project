@@ -8,7 +8,7 @@ import "./home.css"
 function Home({saveState , state}) {
   return (
     <div className='text-light gradient-bg-welcome'>
-      <Topbar saveState={saveState} />
+      <Topbar saveState={saveState} path={true} />
       <div className="homeContainer">
         <Sidebar />
         <Feed  state={state}/>
