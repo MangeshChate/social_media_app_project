@@ -165,7 +165,7 @@ function Messenger({saveState}) {
                                         </div>
                                         <div className="chatBoxBottom d-flex gap-3">
                                         <span className=' bg-primary bg-opacity-50 rounded-5 p-1' style={{cursor:"pointer"}}   onClick={enhanceText} >
-                                                <img src="https://stickerswiki.ams3.cdn.digitaloceanspaces.com/zoobapack/6168298.512.webp" alt="" className='img-fluid ' style={{ width: "54px" }} />
+                                                <img src="https://cdn-icons-png.flaticon.com/512/802/802338.png" alt="" className='img-fluid ' style={{ width: "54px" }} />
 
                                             </span>
                                             <textarea name="" placeholder='write something...' className=' chatMessageInput text-light rounded-5 white-glassmorphism' value={newMessages} onChange={(e) => setNewMessages(e.target.value)}></textarea>

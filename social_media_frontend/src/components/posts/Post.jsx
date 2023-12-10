@@ -52,7 +52,7 @@ function Post({ post , state}) {
     
 
     return (
-        <div className='post white-glassmorphism' >
+        <div className='post white-glassmorphism ' >
             <div className="postWrapper">
                 <div className="postTop">
                     <div className="postTopLeft">

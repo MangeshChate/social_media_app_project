@@ -1,6 +1,6 @@
 import React from 'react'
 import "./sidebar.css"
-import { Bookmark, Chat, Event, Group, HailTwoTone, Logout, QuestionMarkRounded, RssFeed, School, VideoCallRounded, Work, WorkHistory } from "@mui/icons-material";
+import { Atm, AtmTwoTone, Bookmark, Chat, Event, Group, HailTwoTone, Logout, QuestionMarkRounded, RssFeed, School, Storage, VideoCallRounded, Work, WorkHistory } from "@mui/icons-material";
 import CloseFriend from '../closeFriend/CloseFriend';
 import { Users } from '../../dummyData'
 import { Link } from 'react-router-dom';
@@ -23,19 +23,19 @@ function Sidebar() {
                         <Chat className='sidebarIcon' />
                         <span className="sidebarListItemText">Chats</span>
                     </Link>
-                    <li className="sidebarListItem">
+                    <Link to="/rabitube" className="sidebarListItem text-light text-decoration-none">
                         <VideoCallRounded className='sidebarIcon' />
                         <span className="sidebarListItemText">Videos</span>
-                    </li>
-                    <li className="sidebarListItem">
-                        <Group className='sidebarIcon' />
-                        <span className="sidebarListItemText">Groups</span>
-                    </li>
+                    </Link>
+                    <a href="https://rabbitcloud.netlify.app/" target='_blank' className="text-light text-decoration-none sidebarListItem">
+                        <Storage className='sidebarIcon' />
+                        <span className="sidebarListItemText">Cloud</span>
+                    </a>
               
-                    <li className="sidebarListItem">
-                        <WorkHistory className='sidebarIcon' />
-                        <span className="sidebarListItemText">Jobs</span>
-                    </li>
+                    <a href="https://cryptotm.netlify.app/" target='_blank' className="sidebarListItem text-light text-decoration-none">
+                        <AtmTwoTone className='sidebarIcon' />
+                        <span className="sidebarListItemText">CryptoTm</span>
+                    </a>
                     <li className="sidebarListItem">
                         <Event className='sidebarIcon' />
                         <span className="sidebarListItemText">Events</span>
@@ -60,7 +60,7 @@ function Sidebar() {
 
                 <Link to="/rabbitai" className="m-3  text-decoration-none text-light btn  btn-outline-info  rounded-3 shadow font-monospace d-flex align-items-center">
 
-                    <img src="https://stickerswiki.ams3.cdn.digitaloceanspaces.com/zoobapack/6168298.512.webp" className='sidebarIconImg' alt="" />
+                    <img src="https://cdn-icons-png.flaticon.com/512/802/802338.png" className='sidebarIconImg' alt="" />
                     <span className="sidebarListItemText fw-bold ">Talk with Rabbit AI</span>
                 </Link>
 

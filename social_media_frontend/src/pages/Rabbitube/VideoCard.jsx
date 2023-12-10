@@ -14,7 +14,7 @@ function VideoCard({account , title, description , videoUrl ,thumbnail ,  timest
     }
 
     return (
-        <div className='card  blue-glassmorphism text-light ms-1 me-1' style={{ width: "440px", height: "320px" }}>
+        <div className='  blue-glassmorphism text-light ms-1 me-1' style={{ width: "440px", height: "320px" }}>
             <div className="card-image">
                 <Link to="/rabitube/videowindow" style={{ cursor: "pointer" }}>
                     <img src={thumbnail} alt="" className='img-fluid object-fit-cover p-2 rounded-4' style={{ width: "100%", height: "250px" }} onClick={clickHandle}/>

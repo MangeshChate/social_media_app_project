@@ -137,7 +137,7 @@ function Rightbar({ user, state }) {
 
             </div>
           </div>
-          <img src="https://www.levi.in/on/demandware.static/-/Sites-LeviIN-Library/en_IN/dw17b210a1/images/TileBannerpolo.jpg" className='rightbarAd' alt="ad" />
+          <img src="https://th.bing.com/th/id/OIG.2GdwvS6vu9ZtyGYGuH9A?pid=ImgGn" className='rightbarAd img-fluid object-fit ' alt="ad" style={{position:"relative" , width:"100%" , height:"600px" , }}/>
         </div>
 
 

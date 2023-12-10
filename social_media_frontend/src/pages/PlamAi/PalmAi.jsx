@@ -37,7 +37,7 @@ function PalmAi({state , saveState}) {
             if (response[0].trim() !== '') {
                 setChat((prevChat) => [
                     ...prevChat,
-                    { text: processText(response), type: 'bot white-glassmorphism ', img: "https://stickerswiki.ams3.cdn.digitaloceanspaces.com/zoobapack/6168298.512.webp" },
+                    { text: processText(response), type: 'bot white-glassmorphism ', img: "https://cdn-icons-png.flaticon.com/512/802/802338.png" },
                 ]);
             }
         };
@@ -64,7 +64,7 @@ function PalmAi({state , saveState}) {
                 <div className="aiSuggest col-2 " style={{ borderRight: "1px solid grey" }}>
                     <div className="aiSuggestWrapper p-3 " >
                         <div className="brand d-flex align-items-center">
-                            <img src="https://stickerswiki.ams3.cdn.digitaloceanspaces.com/zoobapack/6168298.512.webp" alt="" className='rabbitlogo object-fit-cover' style={{ width: "80px" }} />
+                            <img src="https://cdn-icons-png.flaticon.com/512/802/802338.png" alt="" className='rabbitlogo object-fit-cover' style={{ width: "80px" }} />
                             <div> 
                                 <span className='text-light fw-bold fs-3 font-monospace'>Rabbit AI</span>
                                 <p className='text-light font-monospace text-secondary fw-semibold'>powered by PaLM 2</p>
@@ -72,16 +72,16 @@ function PalmAi({state , saveState}) {
 
                         </div>
                         <div className="ask mt-5 d-flex flex-column gap-4">
-                            <span className="btn  font-monospace btn-outline-info p-2" onClick={() => setMessage("Good Morning !")} >
+                            <span className="btn border-1 border-info  font-monospace btn-outline-info p-2" onClick={() => setMessage("Good Morning !")} >
                                 Say, "Good Morning" to Rabbit.
                             </span>
-                            <span className="btn  font-monospace btn-outline-info p-2" onClick={() => setMessage("Tell me some unique facts .")}>
+                            <span className="btn  border-1 border-info font-monospace btn-outline-info p-2" onClick={() => setMessage("Tell me some unique facts .")}>
                                 Ask about some unique facts ?
                             </span>
-                            <span className="btn font-monospace btn-outline-info p-2" onClick={() => setMessage("Tell me some facts about one piece anime ?")}>
+                            <span className="btn border-1 border-info font-monospace btn-outline-info p-2" onClick={() => setMessage("Tell me some facts about one piece anime ?")}>
                                 Ask facts about OnePiece Anime ?
                             </span>
-                            <span className="btn  font-monospace btn-outline-info p-2" onClick={() => setMessage("Jay Shree Ram !")}>
+                            <span className="btn border-1 border-info font-monospace btn-outline-info p-2" onClick={() => setMessage("Jay Shree Ram !")}>
                                 Say, Jay Shree Ram to Rabbit.
                             </span>
                         </div>
