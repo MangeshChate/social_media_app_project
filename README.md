@@ -53,7 +53,7 @@ Here are some screenshots showcasing the features and user interface of the Web3
 <img src="./landing_page/screenshots/10.png" alt="Feature 9" style="border-radius: 20px; width: 80%; border: 5px solid #ddd; padding: 10px;"/>
 <img src="./landing_page/screenshots/11.png" alt="Feature 10" style="border-radius: 20px; width: 80%; border: 5px solid #ddd; padding: 10px;"/>
 
-<img src="./landing_page/screenshots/13.png" alt="Feature 12" style="border-radius: 20px; width: 80%; border: 5px solid #ddd; padding: 10px;"/>
+
 
 These images give you a glimpse into the core features and design of the platform.
 
