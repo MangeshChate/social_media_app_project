@@ -27,7 +27,7 @@ function Sidebar() {
                         <VideoCallRounded className='sidebarIcon' />
                         <span className="sidebarListItemText">Videos</span>
                     </Link>
-                    <a href="https://rabbitcloud.netlify.app/" target='_blank' className="text-light text-decoration-none sidebarListItem">
+                    <a href="https://joyvault.netlify.app/" target='_blank' className="text-light text-decoration-none sidebarListItem">
                         <Storage className='sidebarIcon' />
                         <span className="sidebarListItemText">Cloud</span>
                     </a>

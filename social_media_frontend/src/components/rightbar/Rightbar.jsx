@@ -7,9 +7,9 @@ import axios from 'axios'
 import { Link, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../../context/AuthContext'
 import CopyButton from '../CopyButton';
-import {} from "react-router-dom"
+import { } from "react-router-dom"
 
-function Rightbar({ user, state }) {
+function Rightbar({ user, state, username }) {
 
   const PF = import.meta.env.VITE_PUBLIC_FOLDER;
   const [friends, setFriends] = useState([]);
@@ -120,6 +120,7 @@ function Rightbar({ user, state }) {
                   Ethereum Card
                 </div>
               </div>
+              
               <div className='eth-profile  d-flex flex-column '>
                 <span className='fw-bold font-monospace '>{currentUser.username}</span>
                 {currentUser.accountNumber ? (
@@ -137,7 +138,14 @@ function Rightbar({ user, state }) {
 
             </div>
           </div>
-          <img src="https://th.bing.com/th/id/OIG.2GdwvS6vu9ZtyGYGuH9A?pid=ImgGn" className='rightbarAd img-fluid object-fit ' alt="ad" style={{position:"relative" , width:"100%" , height:"600px" , }}/>
+            <div>
+                <Link to={{
+                  pathname: "/metaverse",
+                  state: { username: username }
+                }} className='btn  p-2 fw-bold btn-light'>Experience Metaverse</Link>
+
+              </div>
+          <img src="https://th.bing.com/th/id/OIG.2GdwvS6vu9ZtyGYGuH9A?pid=ImgGn" className='rightbarAd img-fluid object-fit ' alt="ad" style={{ position: "relative", width: "100%", height: "600px", }} />
         </div>
 
 
@@ -211,7 +219,12 @@ function Rightbar({ user, state }) {
           </div>
 
         </div>
-
+        <div>
+        <Link to={{
+                  pathname: "/metaverse",
+                  state: { username: username }
+                }} className='btn  p-2 fw-bold btn-light'>Experience Metaverse</Link>
+        </div>
 
         <h4 className='rightbarTitle mt-5 fw-bold'>User Friends</h4>
 

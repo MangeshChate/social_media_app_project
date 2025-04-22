@@ -13,6 +13,7 @@ import Wallet from './pages/Wallet';
 import Furryfeeds from './pages/furreyFeeds/Furryfeeds';
 import RabbiTube from './pages/Rabbitube/RabbiTube';
 import VideoWindow from './pages/Rabbitube/VideoWindow';
+import Metaverse from './pages/metaverse/Metaverse';
 
 
 function App() {
@@ -45,6 +46,8 @@ function App() {
         <Route exact path="/furryfeeds" element={<>{!user ? <Navigate to="/" /> :  <Furryfeeds state={state} saveState={saveState}/>}</>} />
 
         <Route exact path="/rabitube" element={<>{!user ? <Navigate to="/" /> :  <RabbiTube state={state} saveState={saveState}/>}</>} />
+
+        <Route exact path="/metaverse" element={<>{!user ? <Navigate to="/" /> :  <Metaverse state={state} saveState={saveState}/>}</>} />
 
         <Route exact path="/rabitube/videowindow" element={<>{!user ? <Navigate to="/" /> :  <VideoWindow state={state} saveState={saveState}/>}</>} />
 

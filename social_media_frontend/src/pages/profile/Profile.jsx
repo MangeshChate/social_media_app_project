@@ -10,15 +10,17 @@ import { Cancel, Edit } from '@mui/icons-material'
 function Profile({ state, saveState }) {
     const PF = import.meta.env.VITE_PUBLIC_FOLDER;
 
-
+   
     const [user, setUser] = useState([]);
     const username = useParams().username
+    localStorage.setItem('username', username);
 
     useEffect(() => {
         const fetchUsers = async () => {
 
             const res = await axios.get(`http://localhost:8800/api/users?username=${username}`);
             setUser(res.data);
+            
            
 
         }
@@ -118,7 +120,7 @@ function Profile({ state, saveState }) {
                     </div>
                     <div className="profileRightBottom">
                         <Feed username={username} />
-                        <Rightbar user={user} state={state} />
+                        <Rightbar user={user} state={state} username={username}/>
 
                     </div>
 
