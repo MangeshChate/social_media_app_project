@@ -1,50 +1,41 @@
+🚀 About the Project
+A decentralized social media platform leveraging AI (PalmAI) for content moderation/recommendations and Solidity smart contracts for secure transactions (e.g., tipping, NFT-based posts). Built with a modern tech stack for scalability and security.
 
+Key Features:
 
-# Social Media App
+✔ AI-Powered Feed: Personalized content using PalmAI.
 
-A social media application that integrates AI technologies and Solidity smart contracts to offer a unique and interactive user experience. This project demonstrates the use of advanced technologies to enhance social media interactions and ensure secure transactions.
+✔ Blockchain Integration: Smart contracts for tipping/ownership (Ethereum/Polygon).
 
-## Features
+✔ Web3 Auth: Secure login via MetaMask/WalletConnect.
 
-- **User Profiles**: Create and manage user profiles with personalized settings.
-- **Posts & Interactions**: Post updates, like, comment, and interact with other users' content.
-- **AI Integration**: Utilize AI for content recommendations and moderation.
-- **Solidity Smart Contracts**: Implement blockchain-based smart contracts for secure transactions and content ownership.
-- **Scalable Backend**: Efficiently handle user data and interactions with a robust Node.js and Express.js backend.
+✔ Real-Time Interactions: WebSockets for chats/notifications.
 
-## Technologies Used
+🛠 Tech Stack
+Area	Technologies Used
+Frontend	React-Vite, TailwindCSS, Ethers.js
+Backend	Node.js, Express.js, WebSockets
+Database	MongoDB (NoSQL for user data)
+AI	Google PalmAPI (Moderation/Recommendations)
+Blockchain	Solidity, Hardhat, IPFS (for media storage)
+⚙️ Installation
+Clone the repo:
 
-- **Frontend**: React-Vite
-- **Backend**: Node.js, Express.js
-- **Database**: MongoDb
-- **AI Integration**: PalmAi
-- **Blockchain**: Solidity
+bash
+git clone https://github.com/MangeshChate/web3-social-network.git
+cd web3-social-network
+Install dependencies:
 
+bash
+npm install 
+Set up .env (example):
 
-## Installation
+env
+MONGO_URI=your_mongodb_uri  
+PALM_API_KEY=your_ai_key  
+PRIVATE_KEY=your_wallet_key_for_smart_contracts 
+Run the app:
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/MangeshChate/social_media_app_project.git
-   ```
-2. Navigate to the project directory:
-   ```bash
-   cd social_media_app_project
-   ```
-3. Install the required dependencies:
-   ```bash
-   npm install
-   ```
-4. Set up environment variables:
-   - Create a `.env` file in the root directory and add the necessary configuration values (e.g., database connection strings, AI service keys).
-
-## Usage
-
-1. Start the backend server:
-   ```bash
-   npm start
-   ```
-2. Access the application via [http://localhost:3000](http://localhost:3000) or the configured port.
-
-
-
+bash
+npm run dev  # Frontend (Vite) 
+npm start    # Backend (Node/Express) 
