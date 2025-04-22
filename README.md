@@ -37,21 +37,22 @@ A modern, decentralized social media platform with enhanced security and engagem
 
 Here are some screenshots showcasing the features and user interface of the Web3 Social Network:
 
-- ![Landing Page](./landing_page/screenshots/01.png){: style="border-radius: 15px;"}
-- ![Feature 1](./landing_page/screenshots/02.png){: style="border-radius: 15px;"}
-- ![Feature 2](./landing_page/screenshots/03.png){: style="border-radius: 15px;"}
-- ![Feature 3](./landing_page/screenshots/04.png){: style="border-radius: 15px;"}
-- ![Feature 4](./landing_page/screenshots/05.png){: style="border-radius: 15px;"}
-- ![Feature 5](./landing_page/screenshots/06.png){: style="border-radius: 15px;"}
-- ![Feature 6](./landing_page/screenshots/07.png){: style="border-radius: 15px;"}
-- ![Feature 7](./landing_page/screenshots/08.png){: style="border-radius: 15px;"}
-- ![Feature 8](./landing_page/screenshots/09.png){: style="border-radius: 15px;"}
-- ![Feature 9](./landing_page/screenshots/10.png){: style="border-radius: 15px;"}
-- ![Feature 10](./landing_page/screenshots/11.png){: style="border-radius: 15px;"}
-- ![Feature 11](./landing_page/screenshots/12.png){: style="border-radius: 15px;"}
-- ![Feature 12](./landing_page/screenshots/13.png){: style="border-radius: 15px;"}
+<img src="./landing_page/screenshots/01.png" alt="Landing Page" style="border-radius: 15px; width: 50%;"/>
+<img src="./landing_page/screenshots/02.png" alt="Feature 1" style="border-radius: 15px; width: 50%;"/>
+<img src="./landing_page/screenshots/03.png" alt="Feature 2" style="border-radius: 15px; width: 50%;"/>
+<img src="./landing_page/screenshots/04.png" alt="Feature 3" style="border-radius: 15px; width: 50%;"/>
+<img src="./landing_page/screenshots/05.png" alt="Feature 4" style="border-radius: 15px; width: 50%;"/>
+<img src="./landing_page/screenshots/06.png" alt="Feature 5" style="border-radius: 15px; width: 50%;"/>
+<img src="./landing_page/screenshots/07.png" alt="Feature 6" style="border-radius: 15px; width: 50%;"/>
+<img src="./landing_page/screenshots/08.png" alt="Feature 7" style="border-radius: 15px; width: 50%;"/>
+<img src="./landing_page/screenshots/09.png" alt="Feature 8" style="border-radius: 15px; width: 50%;"/>
+<img src="./landing_page/screenshots/10.png" alt="Feature 9" style="border-radius: 15px; width: 50%;"/>
+<img src="./landing_page/screenshots/11.png" alt="Feature 10" style="border-radius: 15px; width: 50%;"/>
+<img src="./landing_page/screenshots/12.png" alt="Feature 11" style="border-radius: 15px; width: 50%;"/>
+<img src="./landing_page/screenshots/13.png" alt="Feature 12" style="border-radius: 15px; width: 50%;"/>
 
 These images give you a glimpse into the core features and design of the platform.
+
 
 
 ## ⚙️ Installation
