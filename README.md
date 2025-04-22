@@ -32,6 +32,28 @@ This platform combines cutting-edge technologies for a unique user experience:
 
 A modern, decentralized social media platform with enhanced security and engagement.
 
+
+## 📸 Screenshots
+
+Here are some screenshots showcasing the features and user interface of the Web3 Social Network:
+
+- ![Landing Page](./landing_page/screenshots/01.png){: style="border-radius: 15px;"}
+- ![Feature 1](./landing_page/screenshots/02.png){: style="border-radius: 15px;"}
+- ![Feature 2](./landing_page/screenshots/03.png){: style="border-radius: 15px;"}
+- ![Feature 3](./landing_page/screenshots/04.png){: style="border-radius: 15px;"}
+- ![Feature 4](./landing_page/screenshots/05.png){: style="border-radius: 15px;"}
+- ![Feature 5](./landing_page/screenshots/06.png){: style="border-radius: 15px;"}
+- ![Feature 6](./landing_page/screenshots/07.png){: style="border-radius: 15px;"}
+- ![Feature 7](./landing_page/screenshots/08.png){: style="border-radius: 15px;"}
+- ![Feature 8](./landing_page/screenshots/09.png){: style="border-radius: 15px;"}
+- ![Feature 9](./landing_page/screenshots/10.png){: style="border-radius: 15px;"}
+- ![Feature 10](./landing_page/screenshots/11.png){: style="border-radius: 15px;"}
+- ![Feature 11](./landing_page/screenshots/12.png){: style="border-radius: 15px;"}
+- ![Feature 12](./landing_page/screenshots/13.png){: style="border-radius: 15px;"}
+
+These images give you a glimpse into the core features and design of the platform.
+
+
 ## ⚙️ Installation
 
 ### Clone the repo:
