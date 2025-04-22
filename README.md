@@ -37,6 +37,10 @@ A modern, decentralized social media platform with enhanced security and engagem
 
 Here are some screenshots showcasing the features and user interface of the Web3 Social Network:
 
+<img src="./landing_page/screenshots/12.png" alt="Feature 11" style="border-radius: 20px; width: 80%; border: 5px solid #ddd; padding: 10px;"/>
+<img src="./landing_page/screenshots/13.png" alt="Feature 12" style="border-radius: 20px; width: 80%; border: 5px solid #ddd; padding: 10px;"/>
+
+
 <img src="./landing_page/screenshots/01.png" alt="Landing Page" style="border-radius: 20px; width: 80%; border: 5px solid #ddd; padding: 10px;"/>
 <img src="./landing_page/screenshots/02.png" alt="Feature 1" style="border-radius: 20px; width: 80%; border: 5px solid #ddd; padding: 10px;"/>
 <img src="./landing_page/screenshots/03.png" alt="Feature 2" style="border-radius: 20px; width: 80%; border: 5px solid #ddd; padding: 10px;"/>
@@ -48,7 +52,7 @@ Here are some screenshots showcasing the features and user interface of the Web3
 <img src="./landing_page/screenshots/09.png" alt="Feature 8" style="border-radius: 20px; width: 80%; border: 5px solid #ddd; padding: 10px;"/>
 <img src="./landing_page/screenshots/10.png" alt="Feature 9" style="border-radius: 20px; width: 80%; border: 5px solid #ddd; padding: 10px;"/>
 <img src="./landing_page/screenshots/11.png" alt="Feature 10" style="border-radius: 20px; width: 80%; border: 5px solid #ddd; padding: 10px;"/>
-<img src="./landing_page/screenshots/12.png" alt="Feature 11" style="border-radius: 20px; width: 80%; border: 5px solid #ddd; padding: 10px;"/>
+
 <img src="./landing_page/screenshots/13.png" alt="Feature 12" style="border-radius: 20px; width: 80%; border: 5px solid #ddd; padding: 10px;"/>
 
 These images give you a glimpse into the core features and design of the platform.
